@@ -37,6 +37,7 @@ class TabBarController: UITabBarController {
     }
 
     func setupTabBAr() {
+        self.tabBar.backgroundColor = .white
         let items: [TabBarItem] = [.feed, .profile]
         
         self.viewControllers = items.map({ tabBarIten in
