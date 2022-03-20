@@ -72,10 +72,13 @@ class FeedViewController: UIViewController {
         ])
     }
     
-    @objc private func showPost() {
-        let showSelectedPost = PostViewController()
-        self.navigationController?.pushViewController(showSelectedPost, animated: true)
-        let myPost = Post(title: "Мой пост")
-        showSelectedPost.navigationItem.title = myPost.title
+    @objc private func showPost(sender: UIButton) {
+        
+        sender.showAnimation {
+            let showSelectedPost = PostViewController()
+            self.navigationController?.pushViewController(showSelectedPost, animated: true)
+            let myPost = PostFeed(title: "Мой пост")
+            showSelectedPost.navigationItem.title = myPost.title
+        }
     }
 }
