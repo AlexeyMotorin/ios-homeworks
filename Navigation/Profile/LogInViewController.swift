@@ -21,7 +21,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
         return contentView
-        }()
+    }()
     
     private lazy var logoImageView: UIImageView = {
         let image = UIImageView()
@@ -94,11 +94,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         setupNavigationBar()
         
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { nc in
-            self.view.frame.origin.y = -100
+            if let kbdSize = (nc.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                self.loginScrollView.contentOffset = CGPoint(x: 0, y: kbdSize.height)
+            }
+            
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { nc in
+                self.loginScrollView.contentOffset = .zero
+            }
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { nc in
-            self.view.frame.origin.y = 0.0
-        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let nc = NotificationCenter.default
+        nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -135,21 +145,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let contentViewWidthConstraint = self.contentView.widthAnchor.constraint(equalTo: self.loginScrollView.widthAnchor)
         let contentViewHeightConstraint = self.contentView.heightAnchor.constraint(equalTo: self.loginScrollView.heightAnchor)
         
-        let centerXAnchorLogoImageView = self.logoImageView.centerXAnchor.constraint(equalTo: self.loginScrollView.centerXAnchor)
-        let topConstrainLogoImageView = self.logoImageView.topAnchor.constraint(equalTo: self.loginScrollView.topAnchor, constant: 120)
-        
+        let centerXAnchorLogoImageView = self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+        let topConstrainLogoImageView = self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120)
+
         let heightLogoImageView = self.logoImageView.heightAnchor.constraint(equalToConstant: 100)
         let widthLogoImageView = self.logoImageView.widthAnchor.constraint(equalToConstant: 100)
         
-        let topConstrainStackView = self.textFieldsStackView.topAnchor.constraint(equalTo: self.logoImageView.bottomAnchor, constant: 120)
-        let leftConstrainStackView = self.textFieldsStackView.leadingAnchor.constraint(equalTo: self.loginScrollView.leadingAnchor, constant: 16)
+        let topConstrainStackView = self.textFieldsStackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
+        let leftConstrainStackView = self.textFieldsStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
         let heightStackView = self.textFieldsStackView.heightAnchor.constraint(equalToConstant: 100)
-        let centerXAnchorStackView = self.textFieldsStackView.centerXAnchor.constraint(equalTo: self.loginScrollView.centerXAnchor)
+        let centerXAnchorStackView = self.textFieldsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         
         let topConstrainButton = self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16)
-        let leftConstrainButton = self.logInButton.leadingAnchor.constraint(equalTo: self.loginScrollView.leadingAnchor, constant: 16)
+        let leftConstrainButton = self.logInButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
         let heightButton = self.logInButton.heightAnchor.constraint(equalToConstant: 50)
-        let centerXAnchorButton = self.logInButton.centerXAnchor.constraint(equalTo: self.loginScrollView.centerXAnchor)
+        let centerXAnchorButton = self.logInButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         
         NSLayoutConstraint.activate([
             topConstrainLoginScroll,
@@ -181,14 +191,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func buttonPressed() {
-        
         logInButton.showAnimation {
+            self.loginTextField.resignFirstResponder()
             self.showPrifileVC()
             self.passwordTextField.resignFirstResponder()
-          }
-        
+            
+        }
     }
-    
+        
     private func showPrifileVC() {
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
