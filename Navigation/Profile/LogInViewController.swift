@@ -95,7 +95,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { nc in
             if let kbdSize = (nc.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-                let yPosition = kbdSize.height - 200
+                let yPosition = kbdSize.height - 150
                 self.loginScrollView.contentOffset = CGPoint(x: 0, y: yPosition)
                 
             }

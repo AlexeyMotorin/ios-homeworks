@@ -70,9 +70,6 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         return button
     }()
     
-    
-    
-    
     private lazy var profileStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -120,19 +117,16 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     @objc func statusTextChanged(_ textField: UITextField) {
         self.statusLabel.text = textField.text
-        
         if let text = textField.text {
             self.statusText = text
         }
     }
     
     @objc private func buttonPressed() {
-        
         setStatusButton.showAnimation {
             self.statusTextField.endEditing(true)
             self.checkStatus()
         }
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -179,7 +173,6 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             trailingConstrainOfSetStatusButton,
             bottomConstrainOfSetStatusButton,
             heightConstrainOfSetStatusButton
-            
         ])
     }
 }

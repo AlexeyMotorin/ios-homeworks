@@ -27,6 +27,7 @@
 		5BBB51E827EB2E1B00EAD2B6 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */; };
 		5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */; };
 		5BBB51EC27EB2EBE00EAD2B6 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51EB27EB2EBE00EAD2B6 /* PhotosViewController.swift */; };
+		5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		5BBB51EB27EB2EBE00EAD2B6 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				5B6637A727DBFD8500B5BB99 /* TabBar */,
 				5B6637A627DBFD6200B5BB99 /* Feed */,
 				5B6637A327DBFC8000B5BB99 /* Profile */,
+				5BBB51EF27EB570700EAD2B6 /* Animation */,
 				5B699F3A27E71B3C001685CA /* Model */,
 				5B699F3D27E71B64001685CA /* Protocol */,
 				5BA199DF27B917C40072342E /* Assets.xcassets */,
@@ -155,6 +158,14 @@
 				5BA199E427B917C40072342E /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5BBB51EF27EB570700EAD2B6 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +254,7 @@
 				5BA199F727B94B2E0072342E /* InfoViewController.swift in Sources */,
 				5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */,
 				5B699F3F27E71B86001685CA /* Setupable.swift in Sources */,
+				5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */,
 				5B699F3727E71AEA001685CA /* LogInViewController.swift in Sources */,
 				5BA199D927B917C40072342E /* SceneDelegate.swift in Sources */,
 			);
