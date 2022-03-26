@@ -8,7 +8,7 @@
 import UIKit
 
 class InfoViewController: UIViewController {
-
+    
     private lazy var showAlertButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 12
@@ -32,10 +32,11 @@ class InfoViewController: UIViewController {
     }
     
     private func activateConstraints() {
-        self.showAlertButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        self.showAlertButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-        self.showAlertButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-        self.showAlertButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([
+            self.showAlertButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
+            self.showAlertButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            self.showAlertButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.showAlertButton.heightAnchor.constraint(equalToConstant: 50)])
     }
     
     @objc private func showAlert() {
@@ -45,11 +46,11 @@ class InfoViewController: UIViewController {
         alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Важное сообщение 1"),
                                       style: .default,
                                       handler: { _ in
-                                                print("нажал ОК")
+            print("нажал ОК")
         }))
         alert.addAction(UIAlertAction(title: NSLocalizedString("Отмена", comment: "Важное сообщение 2"),
                                       style: .cancel, handler: { _ in
-                                                                print("нажал отмена")
+            print("нажал отмена")
         }))
         self.present(alert,
                      animated: true,
