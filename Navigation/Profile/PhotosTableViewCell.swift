@@ -108,67 +108,27 @@ class PhotosTableViewCell: UITableViewCell {
         self.photosStackView.addArrangedSubview(thirdImageView)
         self.photosStackView.addArrangedSubview(fourImageView)
         
+        NSLayoutConstraint.activate([
+            self.backView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.backView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.backView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.backView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            
+            self.photosLabel.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 12.0),
+            self.photosLabel.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 12.0),
+            
+            self.arrowView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12.0),
+            self.arrowView.centerYAnchor.constraint(equalTo: self.photosLabel.centerYAnchor),
+            self.arrowView.heightAnchor.constraint(equalTo: self.photosLabel.heightAnchor),
+            self.arrowView.widthAnchor.constraint(equalTo: self.arrowView.heightAnchor, multiplier: 1.0),
+            
+            self.photosStackView.topAnchor.constraint(equalTo: self.photosLabel.bottomAnchor, constant: 12.0),
+            self.photosStackView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor, constant: -12.0),
+            self.photosStackView.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 12.0),
+            self.photosStackView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12.0),
+            
+            self.firstImageView.heightAnchor.constraint(equalTo: self.firstImageView.widthAnchor, multiplier: 1.0)
+        ])
         
-        let backViewConstraints = self.backViewConstraints()
-        let collectionLabelConstraints = self.collectionLabelConstraints()
-        let arrowViewConstraints = self.arrowViewConstraints()
-        let photosStackViewConstraints = self.photosStackViewConstraints()
-        let firstImageViewConstraints = self.firstImageViewConstraints()
-        
-        
-        NSLayoutConstraint.activate(backViewConstraints + collectionLabelConstraints + arrowViewConstraints + photosStackViewConstraints + firstImageViewConstraints)
-    }
-    
-    private func backViewConstraints() -> [NSLayoutConstraint] {
-        
-        let topConstraint = self.backView.topAnchor.constraint(equalTo: self.contentView.topAnchor)
-        let leadingConstraint = self.backView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor)
-        let trailingConstraint = self.backView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor)
-        let bottomConstraint = self.backView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
-        
-        return [
-            topConstraint, leadingConstraint, trailingConstraint, bottomConstraint
-        ]
-    }
-    private func collectionLabelConstraints() -> [NSLayoutConstraint] {
-        
-        let topConstraint = self.photosLabel.topAnchor.constraint(equalTo: self.backView.topAnchor, constant: 12.0)
-        let leadingConstraint = self.photosLabel.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 12.0)
-        
-        return [
-            topConstraint, leadingConstraint
-        ]
-    }
-    private func arrowViewConstraints() -> [NSLayoutConstraint] {
-        
-        let trailingConstraint = self.arrowView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12.0)
-        let centerYConstraint = self.arrowView.centerYAnchor.constraint(equalTo: self.photosLabel.centerYAnchor)
-        let heightConstraint = self.arrowView.heightAnchor.constraint(equalTo: self.photosLabel.heightAnchor)
-        let widthConstraint = self.arrowView.widthAnchor.constraint(equalTo: self.arrowView.heightAnchor, multiplier: 1.0)
-        
-        
-        return [
-            trailingConstraint, centerYConstraint, heightConstraint, widthConstraint
-        ]
-    }
-    private func photosStackViewConstraints() -> [NSLayoutConstraint] {
-        
-        let topConstraint = self.photosStackView.topAnchor.constraint(equalTo: self.photosLabel.bottomAnchor, constant: 12.0)
-        let bottomConstraint = self.photosStackView.bottomAnchor.constraint(equalTo: self.backView.bottomAnchor, constant: -12.0)
-        let leadingConstraint = self.photosStackView.leadingAnchor.constraint(equalTo: self.backView.leadingAnchor, constant: 12.0)
-        let trailingConstraint = self.photosStackView.trailingAnchor.constraint(equalTo: self.backView.trailingAnchor, constant: -12.0)
-        
-        
-        return [
-            topConstraint, bottomConstraint, leadingConstraint, trailingConstraint
-        ]
-    }
-    private func firstImageViewConstraints() -> [NSLayoutConstraint] {
-        
-        let heightConstraint = self.firstImageView.heightAnchor.constraint(equalTo: self.firstImageView.widthAnchor, multiplier: 1.0)
-        
-        return [
-            heightConstraint
-        ]
     }
 }

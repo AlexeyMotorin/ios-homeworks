@@ -15,7 +15,6 @@ class PostTableViewCell: UITableViewCell {
         let image: String
         let likes: Int
         let views: Int
-        
     }
     
     private let authorLabel: UILabel = {
@@ -74,7 +73,6 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func viewSetup() {
-        
         self.contentView.addSubview(authorLabel)
         self.contentView.addSubview(postImageView)
         self.contentView.addSubview(descriptionLabel)
@@ -82,28 +80,28 @@ class PostTableViewCell: UITableViewCell {
         self.contentView.addSubview(viewsCountLabel)
         
         NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
-            authorLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
+            self.authorLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
+            self.authorLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.authorLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
    
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
-            postImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-            postImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            postImageView.heightAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.75),
+            self.postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
+            self.postImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
+            self.postImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+            self.postImageView.heightAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.75),
             
-            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,constant: -16),
-            descriptionLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,constant: 16),
+            self.descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
+            self.descriptionLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor,constant: -16),
+            self.descriptionLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor,constant: 16),
             
-            likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            likesLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 16),
-            likesLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -16),
-            likesLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16),
+            self.likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+            self.likesLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 16),
+            self.likesLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -16),
+            self.likesLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16),
             
-            viewsCountLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            viewsCountLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 16),
-            viewsCountLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -16),
-            viewsCountLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
+            self.viewsCountLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
+            self.viewsCountLabel.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: 16),
+            self.viewsCountLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -16),
+            self.viewsCountLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
         ])
     }
 }

@@ -134,61 +134,34 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.contentView.addSubview(self.textFieldsStackView)
         self.textFieldsStackView.addArrangedSubview(self.loginTextField)
         self.textFieldsStackView.addArrangedSubview(self.passwordTextField)
-        
-        
-        let topConstrainLoginScroll = self.loginScrollView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let leftConstrainLoginScroll = self.loginScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let rightComstrainLoginScroll = self.loginScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        let bottomComstrainLoginScroll = self.loginScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        
-        let contentViewTopConstraint = self.contentView.topAnchor.constraint(equalTo: self.loginScrollView.topAnchor)
-        let contentViewBottomConstraint = self.contentView.bottomAnchor.constraint(equalTo: self.loginScrollView.bottomAnchor)
-        let contentViewCenterXConstraint = self.contentView.centerXAnchor.constraint(equalTo: self.loginScrollView.centerXAnchor)
-        let contentViewWidthConstraint = self.contentView.widthAnchor.constraint(equalTo: self.loginScrollView.widthAnchor)
-        let contentViewHeightConstraint = self.contentView.heightAnchor.constraint(equalTo: self.loginScrollView.heightAnchor)
-        
-        let centerXAnchorLogoImageView = self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        let topConstrainLogoImageView = self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120)
-
-        let heightLogoImageView = self.logoImageView.heightAnchor.constraint(equalToConstant: 100)
-        let widthLogoImageView = self.logoImageView.widthAnchor.constraint(equalToConstant: 100)
-        
-        let topConstrainStackView = self.textFieldsStackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor)
-        let leftConstrainStackView = self.textFieldsStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
-        let heightStackView = self.textFieldsStackView.heightAnchor.constraint(equalToConstant: 100)
-        let centerXAnchorStackView = self.textFieldsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        
-        let topConstrainButton = self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16)
-        let leftConstrainButton = self.logInButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16)
-        let heightButton = self.logInButton.heightAnchor.constraint(equalToConstant: 50)
-        let centerXAnchorButton = self.logInButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
-        
+                
         NSLayoutConstraint.activate([
-            topConstrainLoginScroll,
-            leftConstrainLoginScroll,
-            rightComstrainLoginScroll,
-            bottomComstrainLoginScroll,
+            self.loginScrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.loginScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.loginScrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.loginScrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             
-            contentViewTopConstraint,
-            contentViewBottomConstraint,
-            contentViewWidthConstraint,
-            contentViewHeightConstraint,
-            contentViewCenterXConstraint,
+            self.contentView.topAnchor.constraint(equalTo: self.loginScrollView.topAnchor),
+            self.contentView.bottomAnchor.constraint(equalTo: self.loginScrollView.bottomAnchor),
+            self.contentView.centerXAnchor.constraint(equalTo: self.loginScrollView.centerXAnchor),
+            self.contentView.widthAnchor.constraint(equalTo: self.loginScrollView.widthAnchor),
+            self.contentView.heightAnchor.constraint(equalTo: self.loginScrollView.heightAnchor),
             
-            centerXAnchorLogoImageView,
-            topConstrainLogoImageView,
-            heightLogoImageView,
-            widthLogoImageView,
+            self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120),
+
+            self.logoImageView.heightAnchor.constraint(equalToConstant: 100),
+            self.logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
-            topConstrainStackView,
-            leftConstrainStackView,
-            heightStackView,
-            centerXAnchorStackView,
+            self.textFieldsStackView.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            self.textFieldsStackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
+            self.textFieldsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             
-            topConstrainButton,
-            leftConstrainButton,
-            heightButton,
-            centerXAnchorButton
+            self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16),
+            self.logInButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.logInButton.heightAnchor.constraint(equalToConstant: 50),
+            self.logInButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
         ])
     }
     

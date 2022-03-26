@@ -9,10 +9,6 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
-    private enum Constants {
-        static let itemCount: CGFloat = 3
-    }
-    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -27,32 +23,10 @@ class PhotosViewController: UIViewController {
         collectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: "PhotosCollectionViewCell")
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "DefaultCollectionCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
         return collectionView
     }()
 
-    private let collectionDataSource = [
-        CollectionViewModel(image: "1"),
-        CollectionViewModel(image: "2"),
-        CollectionViewModel(image: "3"),
-        CollectionViewModel(image: "4"),
-        CollectionViewModel(image: "5"),
-        CollectionViewModel(image: "6"),
-        CollectionViewModel(image: "7"),
-        CollectionViewModel(image: "8"),
-        CollectionViewModel(image: "9"),
-        CollectionViewModel(image: "10"),
-        CollectionViewModel(image: "11"),
-        CollectionViewModel(image: "12"),
-        CollectionViewModel(image: "13"),
-        CollectionViewModel(image: "14"),
-        CollectionViewModel(image: "15"),
-        CollectionViewModel(image: "16"),
-        CollectionViewModel(image: "17"),
-        CollectionViewModel(image: "18"),
-        CollectionViewModel(image: "19"),
-        CollectionViewModel(image: "20")
-    ]
+ let photosCollection = PhotosCollection()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,26 +42,24 @@ class PhotosViewController: UIViewController {
     private func setupView() {
         self.view.addSubview(self.collectionView)
         
-        let topConstraint = self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor)
-        let bottomConstraint = self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        let leadingConstraint = self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-        let trailingConstraint = self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        
         NSLayoutConstraint.activate([
-            topConstraint, bottomConstraint,leadingConstraint, trailingConstraint
+            self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
     }
     
     private func itemSize(for width: CGFloat, with spacing: CGFloat) -> CGSize {
         let neededWidth = width - 4 * spacing
-        let itemWidth = floor(neededWidth / Constants.itemCount)
+        let itemWidth = floor(neededWidth / 3)
         return CGSize(width: itemWidth, height: itemWidth)
     }
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.collectionDataSource.count
+        return self.photosCollection.collection.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -97,7 +69,7 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         }
         cell.backgroundColor = .systemGray6
-        let photos = collectionDataSource[indexPath.row]
+        let photos = photosCollection.collection[indexPath.row]
         cell.photoGalleryImages.image = UIImage(named: photos.image)
         cell.photoGalleryImages.contentMode = .scaleAspectFill
         return cell

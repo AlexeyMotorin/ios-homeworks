@@ -110,7 +110,20 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         self.labelsStackView.addArrangedSubview(self.statusLabel)
         self.labelsStackView.addArrangedSubview(self.statusTextField)
         
-        activationConstraints()
+        NSLayoutConstraint.activate([
+            self.profileStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            self.profileStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            self.profileStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            self.profileStackView.heightAnchor.constraint(equalToConstant: 130),
+            
+            self.setStatusButton.topAnchor.constraint(equalTo: self.profileStackView.bottomAnchor, constant: 16),
+            self.setStatusButton.leadingAnchor.constraint(equalTo: self.profileStackView.leadingAnchor),
+            self.setStatusButton.trailingAnchor.constraint(equalTo: self.profileStackView.trailingAnchor),
+            self.setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            self.setStatusButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            self.avatarImageView.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1.0)
+        ])
         
     }
     
@@ -145,34 +158,5 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
         if statusLabel.text == "" {
             statusLabel.text = "Waiting for something..."
         }
-    }
-    
-    private func activationConstraints() {
-        
-        let topConstrainOflabelsAndImageStackView = self.profileStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16)
-        let leadingConstrainOflabelsAndImageStackView = self.profileStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-        let trailingConstrainOflabelsAndImageStackView = self.profileStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        
-        let buttonTopConstrain = self.setStatusButton.topAnchor.constraint(equalTo: self.profileStackView.bottomAnchor, constant: 16)
-        let leadingConstrainOfSetStatusButton = self.setStatusButton.leadingAnchor.constraint(equalTo: self.profileStackView.leadingAnchor)
-        let trailingConstrainOfSetStatusButton = self.setStatusButton.trailingAnchor.constraint(equalTo: self.profileStackView.trailingAnchor)
-        let bottomConstrainOfSetStatusButton = self.setStatusButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10)
-        let heightConstrainOfSetStatusButton = self.setStatusButton.heightAnchor.constraint(equalToConstant: 40)
-        
-        let imageViewAspectRatio = self.avatarImageView.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1.0)
-        
-        NSLayoutConstraint.activate([
-            topConstrainOflabelsAndImageStackView,
-            leadingConstrainOflabelsAndImageStackView,
-            trailingConstrainOflabelsAndImageStackView,
-            
-            imageViewAspectRatio,
-            
-            buttonTopConstrain,
-            leadingConstrainOfSetStatusButton,
-            trailingConstrainOfSetStatusButton,
-            bottomConstrainOfSetStatusButton,
-            heightConstrainOfSetStatusButton
-        ])
     }
 }

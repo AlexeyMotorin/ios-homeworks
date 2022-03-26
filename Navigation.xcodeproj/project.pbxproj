@@ -23,6 +23,8 @@
 		5BA199F327B9460E0072342E /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199F227B9460E0072342E /* PostViewController.swift */; };
 		5BA199F527B947720072342E /* PostFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199F427B947720072342E /* PostFeed.swift */; };
 		5BA199F727B94B2E0072342E /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199F627B94B2E0072342E /* InfoViewController.swift */; };
+		5BA64D2227EF486B007396D4 /* PostsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA64D2127EF486B007396D4 /* PostsCollection.swift */; };
+		5BA64D2627EF5180007396D4 /* PhotosCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA64D2527EF5180007396D4 /* PhotosCollection.swift */; };
 		5BBB51E627EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E527EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift */; };
 		5BBB51E827EB2E1B00EAD2B6 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */; };
 		5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */; };
@@ -49,6 +51,8 @@
 		5BA199F227B9460E0072342E /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		5BA199F427B947720072342E /* PostFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeed.swift; sourceTree = "<group>"; };
 		5BA199F627B94B2E0072342E /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		5BA64D2127EF486B007396D4 /* PostsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCollection.swift; sourceTree = "<group>"; };
+		5BA64D2527EF5180007396D4 /* PhotosCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollection.swift; sourceTree = "<group>"; };
 		5BBB51E527EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
 		5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				5BA199F427B947720072342E /* PostFeed.swift */,
 				5B699F3B27E71B50001685CA /* Post.swift */,
 				5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */,
+				5BA64D2127EF486B007396D4 /* PostsCollection.swift */,
+				5BA64D2527EF5180007396D4 /* PhotosCollection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			files = (
 				5BBB51E827EB2E1B00EAD2B6 /* PhotosTableViewCell.swift in Sources */,
 				5BBB51EC27EB2EBE00EAD2B6 /* PhotosViewController.swift in Sources */,
+				5BA64D2227EF486B007396D4 /* PostsCollection.swift in Sources */,
 				5B699F3927E71B20001685CA /* PostTableViewCell.swift in Sources */,
 				5BBB51E627EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift in Sources */,
 				5BA199F327B9460E0072342E /* PostViewController.swift in Sources */,
@@ -252,6 +259,7 @@
 				5BA199EF27B932900072342E /* FeedViewController.swift in Sources */,
 				5BA199F527B947720072342E /* PostFeed.swift in Sources */,
 				5BA199F727B94B2E0072342E /* InfoViewController.swift in Sources */,
+				5BA64D2627EF5180007396D4 /* PhotosCollection.swift in Sources */,
 				5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */,
 				5B699F3F27E71B86001685CA /* Setupable.swift in Sources */,
 				5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */,

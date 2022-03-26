@@ -83,11 +83,6 @@ class AnimationViewController: UIViewController {
         self.backgroundViewLeadingConstraint = self.backgroundView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         self.backgroundViewTrailingConstraint = self.backgroundView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
 
-        let closeButtonTopConstraint = self.closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15)
-        let closeButtonTrailingConstraint = self.closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10)
-        let closeButtonHeightConstraint = self.closeButton.heightAnchor.constraint(equalToConstant: 50)
-        let closeButtonWidthConstraint = self.closeButton.widthAnchor.constraint(equalToConstant: 50)
-
         NSLayoutConstraint.activate([
             self.avatarImageTopConstraint,
             self.avatarImageLeadingConstraint,
@@ -97,10 +92,11 @@ class AnimationViewController: UIViewController {
             self.backgroundViewBottomConstraint,
             self.backgroundViewLeadingConstraint,
             self.backgroundViewTrailingConstraint,
-            closeButtonTopConstraint,
-            closeButtonTrailingConstraint,
-            closeButtonHeightConstraint,
-            closeButtonWidthConstraint
+            
+            self.closeButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 15),
+            self.closeButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
+            self.closeButton.heightAnchor.constraint(equalToConstant: 50),
+            self.closeButton.widthAnchor.constraint(equalToConstant: 50)
         ].compactMap({ $0 }))
     }
 
