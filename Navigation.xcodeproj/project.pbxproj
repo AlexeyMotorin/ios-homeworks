@@ -11,7 +11,6 @@
 		5B699F3727E71AEA001685CA /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B699F3627E71AEA001685CA /* LogInViewController.swift */; };
 		5B699F3927E71B20001685CA /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B699F3827E71B20001685CA /* PostTableViewCell.swift */; };
 		5B699F3C27E71B50001685CA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B699F3B27E71B50001685CA /* Post.swift */; };
-		5B699F3F27E71B86001685CA /* Setupable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B699F3E27E71B86001685CA /* Setupable.swift */; };
 		5BA199D727B917C40072342E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199D627B917C40072342E /* AppDelegate.swift */; };
 		5BA199D927B917C40072342E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199D827B917C40072342E /* SceneDelegate.swift */; };
 		5BA199DB27B917C40072342E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA199DA27B917C40072342E /* TabBarController.swift */; };
@@ -37,7 +36,6 @@
 		5B699F3627E71AEA001685CA /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		5B699F3827E71B20001685CA /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		5B699F3B27E71B50001685CA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		5B699F3E27E71B86001685CA /* Setupable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setupable.swift; sourceTree = "<group>"; };
 		5BA199D327B917C40072342E /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA199D627B917C40072342E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA199D827B917C40072342E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,14 +122,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5B699F3D27E71B64001685CA /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				5B699F3E27E71B86001685CA /* Setupable.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		5BA199CA27B917C40072342E = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +148,6 @@
 				5B6637A327DBFC8000B5BB99 /* Profile */,
 				5BBB51EF27EB570700EAD2B6 /* Animation */,
 				5B699F3A27E71B3C001685CA /* Model */,
-				5B699F3D27E71B64001685CA /* Protocol */,
 				5BA199DF27B917C40072342E /* Assets.xcassets */,
 				5BA199E127B917C40072342E /* LaunchScreen.storyboard */,
 				5BA199E427B917C40072342E /* Info.plist */,
@@ -261,7 +250,6 @@
 				5BA199F727B94B2E0072342E /* InfoViewController.swift in Sources */,
 				5BA64D2627EF5180007396D4 /* PhotosCollection.swift in Sources */,
 				5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */,
-				5B699F3F27E71B86001685CA /* Setupable.swift in Sources */,
 				5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */,
 				5B699F3727E71AEA001685CA /* LogInViewController.swift in Sources */,
 				5BA199D927B917C40072342E /* SceneDelegate.swift in Sources */,

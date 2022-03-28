@@ -9,12 +9,14 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    struct ViewModel: ViewModelProtocol {
-        let author: String
-        let description: String
-        let image: String
-        let likes: Int
-        let views: Int
+    var post: Post?  {
+        didSet{
+            authorLabel.text = post?.author
+            postImageView.image = UIImage(named: post?.image ?? "Error")
+            descriptionLabel.text = post?.description
+            likesLabel.text = "Likes: \(post?.likes ?? 0)"
+            viewsCountLabel.text = "Views: \(post?.views ?? 0)"
+        }
     }
     
     private let authorLabel: UILabel = {
@@ -106,16 +108,3 @@ class PostTableViewCell: UITableViewCell {
     }
 }
 
-extension PostTableViewCell: Setupable {
-    
-    func setup(with viewModel: ViewModelProtocol) {
-        guard let viewModel = viewModel as? ViewModel else { return }
-        
-        self.authorLabel.text = viewModel.author
-        self.descriptionLabel.text = viewModel.description
-        self.postImageView.image = UIImage(named: viewModel.image)
-        self.likesLabel.text = "Likes: \(String(viewModel.likes))"
-        self.viewsCountLabel.text = "Views: \(String(viewModel.views))"
-        
-    }
-}

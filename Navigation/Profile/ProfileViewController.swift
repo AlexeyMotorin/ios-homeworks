@@ -71,14 +71,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
             
-            let article = postCollection.posts[indexPath.row]
-            let viewModel = PostTableViewCell.ViewModel(author: article.author,
-                                                        description: article.description,
-                                                        image: article.image,
-                                                        likes: article.likes,
-                                                        views: article.views)
-            cell.setup(with: viewModel)
+            cell.post = postCollection.posts[indexPath.row]
             return cell
+        
         }
     }
     
