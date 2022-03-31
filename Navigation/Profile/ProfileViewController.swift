@@ -57,7 +57,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.postCollection.posts.count
+        self.postCollection.posts.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +71,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
             
-            cell.post = postCollection.posts[indexPath.row]
+            cell.selectionStyle = .none
+            cell.post = postCollection.posts[indexPath.row - 1]
             return cell
         
         }

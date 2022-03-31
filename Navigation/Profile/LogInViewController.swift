@@ -87,7 +87,21 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    private lazy var labelAttention: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Введено менее 6 символов пароля"
+        label.textColor = .red
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
+    
     private var delegate: LogInViewController?
+    private var numberOfCharacters = 6
+    
+    private let login = "Login@mail.ru"
+    private let password = "qwerty"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +127,29 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == passwordTextField {
+            guard self.passwordTextField.text != "" else {return}
+            guard self.passwordTextField.text?.count ?? 0 < numberOfCharacters else {
+                self.labelAttention.isHidden = true
+                return
+            }
+            self.labelAttention.isHidden = false
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard textField.text != "" else {
+            textField.shake()
+            return false
+        }
+        
+        guard self.isValidEmail(self.loginTextField.text ?? "") else {
+            self.falseEmailAlert()
+            return true
+        }
+        
         if textField == passwordTextField {
             showPrifileVC()
             textField.endEditing(true)
@@ -122,6 +158,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         textField.endEditing(true)
         return true
     }
+    
     
     private func setupNavigationBar() {
         self.view.backgroundColor = .white
@@ -132,9 +169,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.contentView.addSubview(self.logInButton)
         self.contentView.addSubview(self.logoImageView)
         self.contentView.addSubview(self.textFieldsStackView)
+        self.contentView.addSubview(self.labelAttention)
         self.textFieldsStackView.addArrangedSubview(self.loginTextField)
         self.textFieldsStackView.addArrangedSubview(self.passwordTextField)
-                
+        
         NSLayoutConstraint.activate([
             self.loginScrollView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.loginScrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -149,7 +187,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             
             self.logoImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             self.logoImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 120),
-
+            
             self.logoImageView.heightAnchor.constraint(equalToConstant: 100),
             self.logoImageView.widthAnchor.constraint(equalToConstant: 100),
             
@@ -158,26 +196,75 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             self.textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
             self.textFieldsStackView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
             
-            self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16),
+            self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 25),
             self.logInButton.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             self.logInButton.heightAnchor.constraint(equalToConstant: 50),
-            self.logInButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor)
+            self.logInButton.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
+            
+            self.labelAttention.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 5),
+            self.labelAttention.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            self.labelAttention.heightAnchor.constraint(equalToConstant: 15),
+            self.labelAttention.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
         ])
     }
     
     @objc func buttonPressed() {
         logInButton.showAnimation {
-            self.loginTextField.resignFirstResponder()
-            self.showPrifileVC()
-            self.passwordTextField.resignFirstResponder()
-            
+            switch (self.loginTextField.text == "", self.passwordTextField.text == "") {
+            case (true, false):
+                self.loginTextField.shake()
+                return
+            case (false, true):
+                self.passwordTextField.shake()
+                return
+            case (true, true):
+                self.passwordTextField.shake()
+                self.loginTextField.shake()
+            case (false, false):
+                guard self.isValidEmail(self.loginTextField.text ?? "") else {
+                    self.falseEmailAlert()
+                    return
+                }
+                self.loginTextField.resignFirstResponder()
+                self.passwordTextField.resignFirstResponder()
+                self.showPrifileVC()
+            }
         }
     }
         
     private func showPrifileVC() {
+        guard self.loginTextField.text != "" else {
+            self.loginTextField.shake()
+            self.passwordTextField.shake()
+            return
+        }
+        
+        guard self.loginTextField.text == login && self.passwordTextField.text == password else {
+            self.loginTextField.shake()
+            self.passwordTextField.shake()
+            let alert = UIAlertController(title: "Неверное имя пользователя или пароль", message: "Повторите попытку", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            return
+        }
+        
         let profileViewController = ProfileViewController()
         navigationController?.pushViewController(profileViewController, animated: true)
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    private func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    private func falseEmailAlert() {
+        let alert = UIAlertController(title: "Ошибка!", message: "Введите корректный email", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
 }
+
+
