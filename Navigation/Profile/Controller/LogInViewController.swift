@@ -231,7 +231,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-        
+    
     private func showPrifileVC() {
         guard self.loginTextField.text != "" else {
             self.loginTextField.shake()
@@ -245,7 +245,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             let alert = UIAlertController(title: "Неверное имя пользователя или пароль",
                                           message: """
                                                     Повторите попытку
-
+                                                    
                                                     Login@mail.ru
                                                     qwerty"
                                                     """,

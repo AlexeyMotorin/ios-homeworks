@@ -8,7 +8,7 @@
 import UIKit
 
 class FullPhotoView: UIView {
-
+    
     lazy var photoView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ class FullPhotoView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "xmark.square.fill")?.withTintColor(.black, renderingMode: .alwaysOriginal),
-                                for: .normal)
+                        for: .normal)
         button.addTarget(self, action: #selector(closeButtonPassed), for: .touchUpInside)
         return button
     }()
@@ -59,10 +59,8 @@ class FullPhotoView: UIView {
     }
     
     @objc private func closeButtonPassed() {
-        
         UIView.animate(withDuration: 0.5) {
             self.alpha = 0
         }
     }
-
 }

@@ -35,7 +35,4 @@ class FullPhotoViewController: UIViewController {
             self.photoImageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
-    
-    
-    
 }

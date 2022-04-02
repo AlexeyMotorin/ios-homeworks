@@ -8,7 +8,7 @@
 import UIKit
 
 class PostViewController: UIViewController {
-
+    
     var post: Post?  {
         didSet{
             authorLabel.text = post?.author
@@ -74,7 +74,7 @@ class PostViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
     }
-
+    
     func viewSetup() {
         self.view.backgroundColor = .white
         
@@ -83,25 +83,25 @@ class PostViewController: UIViewController {
         self.view.addSubview(descriptionLabel)
         self.view.addSubview(likesLabel)
         self.view.addSubview(viewsCountLabel)
-
+        
         NSLayoutConstraint.activate([
             self.authorLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
             self.authorLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             self.authorLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 20),
-
+            
             self.postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
             self.postImageView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             self.postImageView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             self.postImageView.heightAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.75),
-
+            
             self.descriptionLabel.topAnchor.constraint(equalTo: self.postImageView.bottomAnchor, constant: 16),
             self.descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor,constant: -16),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 16),
-
+            
             self.likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             self.likesLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
             self.likesLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
-
+            
             self.viewsCountLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
             self.viewsCountLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 16),
             self.viewsCountLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -16)

@@ -13,6 +13,8 @@ protocol PostTableViewCellDelegate {
 
 class PostTableViewCell: UITableViewCell {
     
+    var delegate: PostTableViewCellDelegate?
+    
     var post: Post?  {
         didSet{
             authorLabel.text = post?.author
@@ -69,9 +71,7 @@ class PostTableViewCell: UITableViewCell {
         viewsCountLabel.textAlignment = .right
         return viewsCountLabel
     }()
-    
-    var delegate: PostTableViewCellDelegate?
-    
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         viewSetup()

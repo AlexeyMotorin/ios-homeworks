@@ -63,7 +63,7 @@ class PhotosViewController: UIViewController {
         let itemWidth = floor(neededWidth / 3)
         return CGSize(width: itemWidth, height: itemWidth)
     }
-
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

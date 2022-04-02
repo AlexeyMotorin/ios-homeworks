@@ -8,7 +8,7 @@
 import UIKit
 
 class FeedPostViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()

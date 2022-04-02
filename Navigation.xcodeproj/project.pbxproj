@@ -33,7 +33,6 @@
 		5BBB51E827EB2E1B00EAD2B6 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */; };
 		5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */; };
 		5BBB51EC27EB2EBE00EAD2B6 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51EB27EB2EBE00EAD2B6 /* PhotosViewController.swift */; };
-		5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +64,6 @@
 		5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		5BBB51E927EB2E5000EAD2B6 /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		5BBB51EB27EB2EBE00EAD2B6 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
-		5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +152,6 @@
 				5B6637A627DBFD6200B5BB99 /* Feed */,
 				5B6637A327DBFC8000B5BB99 /* Profile */,
 				5BB48A3027F57F8400737909 /* Extension */,
-				5BBB51EF27EB570700EAD2B6 /* Animation */,
 				5B699F3A27E71B3C001685CA /* Model */,
 				5BA199DF27B917C40072342E /* Assets.xcassets */,
 				5BA199E127B917C40072342E /* LaunchScreen.storyboard */,
@@ -170,14 +167,6 @@
 				5BB48A3127F5801D00737909 /* ViewAnimationFromButton.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		5BBB51EF27EB570700EAD2B6 /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				5BBB51ED27EB560000EAD2B6 /* AnimationViewController.swift */,
-			);
-			path = Animation;
 			sourceTree = "<group>";
 		};
 		5BC731D127F874120024EC6F /* Controller */ = {
@@ -308,7 +297,6 @@
 				5BA199F727B94B2E0072342E /* InfoViewController.swift in Sources */,
 				5BA64D2627EF5180007396D4 /* PhotosCollection.swift in Sources */,
 				5BBB51EA27EB2E5000EAD2B6 /* CollectionViewModel.swift in Sources */,
-				5BBB51EE27EB560000EAD2B6 /* AnimationViewController.swift in Sources */,
 				5BB48A3227F5801D00737909 /* ViewAnimationFromButton.swift in Sources */,
 				5B699F3727E71AEA001685CA /* LogInViewController.swift in Sources */,
 				5BB48A2F27F57F7D00737909 /* UItableViewShake.swift in Sources */,
