@@ -195,7 +195,6 @@
 		5BC731D227F8744B0024EC6F /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
-				5BBB51E527EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift */,
 				5BBB51E727EB2E1B00EAD2B6 /* PhotosTableViewCell.swift */,
 				5B699F3827E71B20001685CA /* PostTableViewCell.swift */,
 			);
@@ -205,6 +204,7 @@
 		5BC731D327F874E30024EC6F /* CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				5BBB51E527EB2DF500EAD2B6 /* PhotosCollectionViewCell.swift */,
 			);
 			path = CollectionCell;
 			sourceTree = "<group>";
