@@ -8,7 +8,7 @@
 import Foundation
 
 struct PostCollection {
-    let posts = [
+    var posts = [
         Post(author: "Motorin A.", description: "Мат в один ход, ход белых...", image: "OneMoveWhite", likes: 0, views: 0),
         Post(author: "Motorin A.", description: "Мат в два хода, ход белых", image: "twoMovesWhite", likes: 0, views: 0),
         Post(author: "Motorin A.", description: "Снова задача на мат в два хода, ход белых...", image: "twoMoves2White", likes: 0, views: 0),

@@ -8,7 +8,7 @@
 import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
-
+    
     private lazy var backView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -107,6 +107,7 @@ class PhotosTableViewCell: UITableViewCell {
         self.photosStackView.addArrangedSubview(secondImageView)
         self.photosStackView.addArrangedSubview(thirdImageView)
         self.photosStackView.addArrangedSubview(fourImageView)
+        
         
         NSLayoutConstraint.activate([
             self.backView.topAnchor.constraint(equalTo: self.contentView.topAnchor),

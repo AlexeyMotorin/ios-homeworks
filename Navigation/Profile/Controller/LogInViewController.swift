@@ -242,9 +242,19 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         guard self.loginTextField.text == login && self.passwordTextField.text == password else {
             self.loginTextField.shake()
             self.passwordTextField.shake()
-            let alert = UIAlertController(title: "Неверное имя пользователя или пароль", message: "Повторите попытку", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true)
+            let alert = UIAlertController(title: "Неверное имя пользователя или пароль",
+                                          message: """
+                                                    Повторите попытку
+
+                                                    Login@mail.ru
+                                                    qwerty"
+                                                    """,
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK",
+                                          style: .default,
+                                          handler: nil))
+            self.present(alert,
+                         animated: true)
             return
         }
         
@@ -260,8 +270,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func falseEmailAlert() {
-        let alert = UIAlertController(title: "Ошибка!", message: "Введите корректный email", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        let alert = UIAlertController(title: "Ошибка!",
+                                      message: "Введите корректный email",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: nil))
         self.present(alert, animated: true)
     }
     

@@ -137,6 +137,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     @objc private func buttonPressed() {
         setStatusButton.showAnimation {
+            guard self.statusTextField.text != "" else {
+                self.statusTextField.shake()
+                self.changeStatusTextField()
+                self.statusLabel.text = "Waiting for something..."
+                return
+            }
+            
             self.statusTextField.endEditing(true)
             self.checkStatus()
         }
@@ -155,8 +162,19 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     private func checkStatus() {
         
-        if statusLabel.text == "" {
-            statusLabel.text = "Waiting for something..."
+        if self.statusLabel.text == "" {
+            self.statusLabel.text = "Waiting for something..."
+            changeStatusTextField()
+            self.statusTextField.shake()
         }
+        self.statusTextField.layer.borderColor = UIColor.black.cgColor
+        self.statusTextField.backgroundColor = .white
     }
+    
+    private func changeStatusTextField() {
+        self.statusTextField.layer.borderColor = UIColor.red.cgColor
+        self.statusTextField.backgroundColor = .systemYellow
+    }
+    
 }
+

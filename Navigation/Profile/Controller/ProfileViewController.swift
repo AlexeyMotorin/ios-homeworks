@@ -9,6 +9,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var postCollection = PostCollection()
+    var likes = 0
+    
     private lazy var profileTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(UITableViewCell.self,
@@ -24,7 +27,6 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
     
-    let postCollection = PostCollection()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,17 +73,51 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             }
             
+            cell.delegate = self
             cell.selectionStyle = .none
             cell.post = postCollection.posts[indexPath.row - 1]
             return cell
-        
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if indexPath.row != 0 {
+            postCollection.posts[indexPath.row - 1].likes = likes
+            tableView.reloadData()
+            return indexPath
+        }
+        return indexPath
     }
     
     func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             self.navigationController?.pushViewController(PhotosViewController(), animated: true)
-        } else { return }
+        } else {
+            let postVC = PostViewController()
+            postVC.post = postCollection.posts[indexPath.row - 1]
+            postVC.post?.views += 1
+            postCollection.posts[indexPath.row - 1].views += 1
+            self.navigationController?.pushViewController(postVC, animated: true)
+        }
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            self.postCollection.posts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade )
+            tableView.endUpdates()
+        }
+    }
+    
+}
+
+extension ProfileViewController: PostTableViewCellDelegate {
+    func setLike(_ number: Int) {
+        likes = number
+    }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PostTableViewCellDelegate {
+    func setLike(_ number : Int)
+}
+
 class PostTableViewCell: UITableViewCell {
     
     var post: Post?  {
@@ -52,6 +56,7 @@ class PostTableViewCell: UITableViewCell {
         likesLabel.textColor = .black
         likesLabel.numberOfLines = 1
         likesLabel.textAlignment = .left
+        likesLabel.isUserInteractionEnabled = true
         return likesLabel
     }()
     
@@ -64,6 +69,9 @@ class PostTableViewCell: UITableViewCell {
         viewsCountLabel.textAlignment = .right
         return viewsCountLabel
     }()
+    
+    var delegate: PostTableViewCellDelegate?
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         viewSetup()
@@ -81,11 +89,15 @@ class PostTableViewCell: UITableViewCell {
         self.contentView.addSubview(likesLabel)
         self.contentView.addSubview(viewsCountLabel)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunc))
+        tap.numberOfTapsRequired = 1
+        likesLabel.addGestureRecognizer(tap)
+        
         NSLayoutConstraint.activate([
             self.authorLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
             self.authorLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             self.authorLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
-   
+            
             self.postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
             self.postImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
             self.postImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
@@ -105,6 +117,12 @@ class PostTableViewCell: UITableViewCell {
             self.viewsCountLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -16),
             self.viewsCountLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
         ])
+    }
+    
+    @objc private func tapFunc() {
+        post?.likes += 1
+        let like = post?.likes ?? 0
+        self.delegate?.setLike(like)
     }
 }
 
