@@ -7,14 +7,22 @@
 
 import UIKit
 
+protocol PostTableViewCellDelegate {
+    func setLike(_ number : Int)
+}
+
 class PostTableViewCell: UITableViewCell {
     
-    struct ViewModel: ViewModelProtocol {
-        let author: String
-        let description: String
-        let image: String
-        let likes: Int
-        let views: Int
+    var delegate: PostTableViewCellDelegate?
+    
+    var post: Post?  {
+        didSet{
+            authorLabel.text = post?.author
+            postImageView.image = UIImage(named: post?.image ?? "Error")
+            descriptionLabel.text = post?.description
+            likesLabel.text = "Likes: \(post?.likes ?? 0)"
+            viewsCountLabel.text = "Views: \(post?.views ?? 0)"
+        }
     }
     
     private let authorLabel: UILabel = {
@@ -50,6 +58,7 @@ class PostTableViewCell: UITableViewCell {
         likesLabel.textColor = .black
         likesLabel.numberOfLines = 1
         likesLabel.textAlignment = .left
+        likesLabel.isUserInteractionEnabled = true
         return likesLabel
     }()
     
@@ -62,6 +71,7 @@ class PostTableViewCell: UITableViewCell {
         viewsCountLabel.textAlignment = .right
         return viewsCountLabel
     }()
+        
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         viewSetup()
@@ -79,11 +89,15 @@ class PostTableViewCell: UITableViewCell {
         self.contentView.addSubview(likesLabel)
         self.contentView.addSubview(viewsCountLabel)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunc))
+        tap.numberOfTapsRequired = 1
+        likesLabel.addGestureRecognizer(tap)
+        
         NSLayoutConstraint.activate([
             self.authorLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
             self.authorLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
             self.authorLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 20),
-   
+            
             self.postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
             self.postImageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
             self.postImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
@@ -104,18 +118,11 @@ class PostTableViewCell: UITableViewCell {
             self.viewsCountLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16)
         ])
     }
-}
-
-extension PostTableViewCell: Setupable {
     
-    func setup(with viewModel: ViewModelProtocol) {
-        guard let viewModel = viewModel as? ViewModel else { return }
-        
-        self.authorLabel.text = viewModel.author
-        self.descriptionLabel.text = viewModel.description
-        self.postImageView.image = UIImage(named: viewModel.image)
-        self.likesLabel.text = "Likes: \(String(viewModel.likes))"
-        self.viewsCountLabel.text = "Views: \(String(viewModel.views))"
-        
+    @objc private func tapFunc() {
+        post?.likes += 1
+        let like = post?.likes ?? 0
+        self.delegate?.setLike(like)
     }
 }
+

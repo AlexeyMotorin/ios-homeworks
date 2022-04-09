@@ -9,13 +9,14 @@ import UIKit
 
 class ProfileHeaderView: UIView, UITextFieldDelegate {
     
-    private lazy var avatarImageView: UIImageView = {
+    lazy var avatarImageView: UIImageView = {
         let avatarImage = UIImageView()
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
         avatarImage.image = UIImage(named: "photo@x2")
         avatarImage.layer.cornerRadius = 65
         avatarImage.layer.borderWidth = 3
         avatarImage.layer.masksToBounds = true
+        avatarImage.isUserInteractionEnabled = true
         avatarImage.layer.borderColor = UIColor.white.cgColor
         return avatarImage
     }()
@@ -114,7 +115,6 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
             self.profileStackView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             self.profileStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             self.profileStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            self.profileStackView.heightAnchor.constraint(equalToConstant: 130),
             
             self.setStatusButton.topAnchor.constraint(equalTo: self.profileStackView.bottomAnchor, constant: 16),
             self.setStatusButton.leadingAnchor.constraint(equalTo: self.profileStackView.leadingAnchor),
@@ -137,6 +137,13 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     @objc private func buttonPressed() {
         setStatusButton.showAnimation {
+            guard self.statusTextField.text != "" else {
+                self.statusTextField.shake()
+                self.changeStatusTextField()
+                self.statusLabel.text = "Waiting for something..."
+                return
+            }
+            
             self.statusTextField.endEditing(true)
             self.checkStatus()
         }
@@ -155,8 +162,19 @@ class ProfileHeaderView: UIView, UITextFieldDelegate {
     
     private func checkStatus() {
         
-        if statusLabel.text == "" {
-            statusLabel.text = "Waiting for something..."
+        if self.statusLabel.text == "" {
+            self.statusLabel.text = "Waiting for something..."
+            changeStatusTextField()
+            self.statusTextField.shake()
         }
+        self.statusTextField.layer.borderColor = UIColor.black.cgColor
+        self.statusTextField.backgroundColor = .white
     }
+    
+    private func changeStatusTextField() {
+        self.statusTextField.layer.borderColor = UIColor.red.cgColor
+        self.statusTextField.backgroundColor = .systemYellow
+    }
+    
 }
+

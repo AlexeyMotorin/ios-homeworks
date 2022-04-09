@@ -25,9 +25,10 @@ class PhotosViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
-
- let photosCollection = PhotosCollection()
-
+    
+    let photosCollection = PhotosCollection()
+    let fullPhotoView = FullPhotoView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -41,12 +42,19 @@ class PhotosViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(self.collectionView)
+        self.fullPhotoView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.fullPhotoView)
         
         NSLayoutConstraint.activate([
             self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            
+            self.fullPhotoView.topAnchor.constraint(equalTo: view.topAnchor),
+            self.fullPhotoView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            self.fullPhotoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            self.fullPhotoView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
     }
     
@@ -55,6 +63,7 @@ class PhotosViewController: UIViewController {
         let itemWidth = floor(neededWidth / 3)
         return CGSize(width: itemWidth, height: itemWidth)
     }
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -75,6 +84,15 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            let image = self.photosCollection.collection[indexPath.row].image
+            self.fullPhotoView.set(image: image)
+            self.fullPhotoView.alpha = 1
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }

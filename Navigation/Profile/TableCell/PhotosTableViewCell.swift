@@ -8,7 +8,7 @@
 import UIKit
 
 class PhotosTableViewCell: UITableViewCell {
-
+    
     private lazy var backView: UIView = {
         let view = UIView()
         view.clipsToBounds = true
@@ -45,7 +45,6 @@ class PhotosTableViewCell: UITableViewCell {
     
     private lazy var firstImageView: UIImageView = {
         let image = UIImage(named: "1")
-        
         let imageCollectionView = UIImageView()
         imageCollectionView.image = image
         imageCollectionView.clipsToBounds = true
@@ -54,9 +53,9 @@ class PhotosTableViewCell: UITableViewCell {
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         return imageCollectionView
     }()
+    
     private lazy var secondImageView: UIImageView = {
         let image = UIImage(named: "2")
-        
         let imageCollectionView = UIImageView()
         imageCollectionView.image = image
         imageCollectionView.clipsToBounds = true
@@ -65,6 +64,7 @@ class PhotosTableViewCell: UITableViewCell {
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         return imageCollectionView
     }()
+    
     private lazy var thirdImageView: UIImageView = {
         let image = UIImage(named: "3")
         
@@ -76,9 +76,9 @@ class PhotosTableViewCell: UITableViewCell {
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         return imageCollectionView
     }()
+    
     private lazy var fourImageView: UIImageView = {
         let image = UIImage(named: "4")
-        
         let imageCollectionView = UIImageView()
         imageCollectionView.image = image
         imageCollectionView.clipsToBounds = true
@@ -129,6 +129,5 @@ class PhotosTableViewCell: UITableViewCell {
             
             self.firstImageView.heightAnchor.constraint(equalTo: self.firstImageView.widthAnchor, multiplier: 1.0)
         ])
-        
     }
 }

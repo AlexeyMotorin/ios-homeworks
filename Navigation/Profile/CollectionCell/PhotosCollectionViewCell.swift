@@ -8,18 +8,18 @@
 import UIKit
 
 class PhotosCollectionViewCell: UICollectionViewCell {
- 
+    
     lazy var photoGalleryImages: UIImageView = {
         let photoGalleryImages = UIImageView()
         photoGalleryImages.clipsToBounds = true
         photoGalleryImages.translatesAutoresizingMaskIntoConstraints = false
         return photoGalleryImages
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.contentView.addSubview(self.photoGalleryImages)
-
+        
         NSLayoutConstraint.activate([
             self.photoGalleryImages.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             self.photoGalleryImages.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor),
@@ -33,4 +33,6 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
+
 
